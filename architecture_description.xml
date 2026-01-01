@@ -1,0 +1,80 @@
+<mxfile host="app.diagrams.net" modified="2026-01-01T00:00:00Z" agent="Mozilla/5.0" version="22.0.0" editor="diagramly" type="device">
+  <diagram id="asg-architecture" name="ASG Architecture">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1600" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+
+        <!-- KS-PPS Group -->
+        <mxCell id="kspps-bg" value="KS-PPS" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#6c8ebf;fillColor=#dae8fc;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="300" height="220" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="kspps-vm" value="vm-kspps" style="shape=mxgraph.azure.vm;html=1;" vertex="1" parent="1">
+          <mxGeometry x="80" y="90" width="80" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="kspps-vnet" value="vnet-kspps" style="shape=mxgraph.azure.virtual_network;html=1;" vertex="1" parent="1">
+          <mxGeometry x="180" y="90" width="80" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="kspps-asg" value="asg-kspps" style="shape=mxgraph.azure.application_security_group;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="170" width="80" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Rejestracja Group -->
+        <mxCell id="rej-bg" value="Rejestracja" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#d6b656;fillColor=#fff2cc;" vertex="1" parent="1">
+          <mxGeometry x="380" y="40" width="300" height="220" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rej-vm" value="vm-rejestracja" style="shape=mxgraph.azure.vm;html=1;" vertex="1" parent="1">
+          <mxGeometry x="420" y="90" width="80" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rej-vnet" value="vnet-rejestracja" style="shape=mxgraph.azure.virtual_network;html=1;" vertex="1" parent="1">
+          <mxGeometry x="520" y="90" width="80" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="rej-asg" value="asg-rejestracja" style="shape=mxgraph.azure.application_security_group;html=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="170" width="80" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- Gabinet Group -->
+        <mxCell id="gab-bg" value="Gabinet.gov.pl" style="rounded=1;whiteSpace=wrap;html=1;strokeColor=#82b366;fillColor=#d5e8d4;" vertex="1" parent="1">
+          <mxGeometry x="720" y="40" width="300" height="220" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="gab-vm" value="vm-gabinet" style="shape=mxgraph.azure.vm;html=1;" vertex="1" parent="1">
+          <mxGeometry x="760" y="90" width="80" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="gab-vnet" value="vnet-gabinet" style="shape=mxgraph.azure.virtual_network;html=1;" vertex="1" parent="1">
+          <mxGeometry x="860" y="90" width="80" height="80" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="gab-asg" value="asg-gabinet" style="shape=mxgraph.azure.application_security_group;html=1;" vertex="1" parent="1">
+          <mxGeometry x="810" y="170" width="80" height="80" as="geometry"/>
+        </mxCell>
+
+        <!-- NSG -->
+        <mxCell id="nsg" value="NSG: nsg-app&#10;Rules:&#10;asg-kspps → 443&#10;asg-rejestracja → 443,22&#10;asg-gabinet → 443" style="shape=mxgraph.azure.network_security_group;whiteSpace=wrap;html=1;strokeColor=#000000;fillColor=#f5f5f5;" vertex="1" parent="1">
+          <mxGeometry x="380" y="320" width="300" height="160" as="geometry"/>
+        </mxCell>
+
+        <!-- Connections -->
+        <mxCell id="edge1" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;endFill=1;" edge="1" parent="1" source="kspps-asg" target="nsg">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="edge2" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;endFill=1;" edge="1" parent="1" source="rej-asg" target="nsg">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+        <mxCell id="edge3" style="edgeStyle=orthogonalEdgeStyle;endArrow=block;html=1;endFill=1;" edge="1" parent="1" source="gab-asg" target="nsg">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
